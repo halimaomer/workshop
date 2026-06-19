@@ -35,7 +35,7 @@ func (h *HotelHandler) FindAll(c *gin.Context) {
 	hotels, err := h.service.FindAll()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"error": "Hotels konnten nicht geladen werden",
+			"message": "Hotels konnten nicht geladen werden.",
 		})
 		return
 	}
@@ -47,7 +47,7 @@ func (h *HotelHandler) FindByID(c *gin.Context) {
 	id, err := strconv.ParseUint(c.Param("id"), 10, 32)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Ungültige ID",
+			"message": "Ungültige Hotel-ID.",
 		})
 		return
 	}
@@ -55,7 +55,7 @@ func (h *HotelHandler) FindByID(c *gin.Context) {
 	hotel, err := h.service.FindByID(uint(id))
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{
-			"error": "Hotel nicht gefunden",
+			"message": "Hotel wurde nicht gefunden.",
 		})
 		return
 	}
@@ -66,23 +66,22 @@ func (h *HotelHandler) FindByID(c *gin.Context) {
 func (h *HotelHandler) Create(c *gin.Context) {
 	var req CreateHotelRequest
 
-	// JSON einlesen
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": err.Error(),
+			"message": "Ungültige Anfrage. Bitte JSON-Format und Datentypen prüfen.",
+			"details": err.Error(),
 		})
 		return
 	}
 
-	// Validieren
 	if err := h.validate.Struct(req); err != nil {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{
-			"error": err.Error(),
+			"message": "Validierung fehlgeschlagen.",
+			"details": err.Error(),
 		})
 		return
 	}
 
-	// Request -> Entity
 	hotel := model.Hotel{
 		Name: req.Name,
 		Standort: &model.Standort{
@@ -101,16 +100,14 @@ func (h *HotelHandler) Create(c *gin.Context) {
 		})
 	}
 
-	// Speichern
 	if err := h.service.Create(&hotel); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"error": err.Error(),
+			"message": "Hotel konnte nicht gespeichert werden.",
+			"details": err.Error(),
 		})
 		return
 	}
 
-	// Location-Header setzen
 	c.Header("Location", "/hotels/"+strconv.Itoa(int(hotel.ID)))
-
 	c.JSON(http.StatusCreated, hotel)
 }
