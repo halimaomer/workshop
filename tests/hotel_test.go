@@ -7,27 +7,18 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"hotel-go/internal/database"
 	"hotel-go/internal/handler"
-	"hotel-go/internal/model"
 	"hotel-go/internal/repository"
 	"hotel-go/internal/service"
 
 	"github.com/gin-gonic/gin"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
 )
 
 func setupRouter(t *testing.T) *gin.Engine {
 	t.Helper()
 
-	db, err := gorm.Open(postgres.Open(
-		"host=localhost port=5432 user=postgres password=postgres dbname=hotel sslmode=disable search_path=hotel",
-	), &gorm.Config{})
-	if err != nil {
-		t.Skipf("Datenbank nicht erreichbar, Test übersprungen: %v", err)
-	}
-
-	db.AutoMigrate(&model.Hotel{}, &model.Standort{}, &model.Zimmer{})
+	db := database.Connect()
 
 	repo := repository.NewHotelRepository(db)
 	svc := service.NewHotelService(repo)
@@ -36,6 +27,7 @@ func setupRouter(t *testing.T) *gin.Engine {
 	gin.SetMode(gin.TestMode)
 	router := gin.Default()
 	h.RegisterRoutes(router)
+
 	return router
 }
 
