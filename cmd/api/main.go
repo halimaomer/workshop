@@ -9,10 +9,19 @@ import (
 	"hotel-go/internal/repository"
 	"hotel-go/internal/service"
 
+	figure "github.com/common-nighthawk/go-figure"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+
+	figure.NewFigure("HOTEL", "doom", true).Print()
+
+	log.Println("────────────────────────────────────────────")
+	log.Println(" Server läuft auf http://localhost:8080")
+	log.Println(" Datenbank verbunden")
+	log.Println(" Umgebung: Development")
+	log.Println("────────────────────────────────────────────")
 	// Datenbank verbinden
 	db := database.Connect()
 
