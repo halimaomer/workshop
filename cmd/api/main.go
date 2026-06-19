@@ -44,7 +44,13 @@ func main() {
 			"status": "up",
 		})
 	})
-
+	router.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"name":    "Hotel API",
+			"version": "1.0.0",
+			"status":  "running",
+		})
+	})
 	// Hotel-Routen
 	hotelHandler.RegisterRoutes(router)
 
