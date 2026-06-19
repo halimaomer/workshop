@@ -88,29 +88,49 @@ Ausführung:
 go test ./tests/... -v
 ```
 
-## Prompts/Requests an KI-Agent/en
+## Prompts / Requests an KI-Agenten
 
-Prompts / Requests an KI-Agenten
-Welches Framework eignet sich für die Entwicklung eines REST-Servers in Go?
-Welche Standardbibliotheken und Tools werden in Go-Projekten häufig verwendet?
-Wie beginne ich ein neues Go-Projekt mit Gin?
-Wie sollte eine typische main.go in Go aussehen?
-Ist ein src-Verzeichnis in Go notwendig?
-Ist meine Projektstruktur für ein Go-Projekt sinnvoll?
-Wie werden Entitäten (Structs) in Go erstellt?
-Wie modelliert man eine 1:1- und 1 mit GORM?
-Was bedeuten Struct Tags wie json, gorm und binding?
-Wie funktioniert die Validierung von Requests in Gin?
-Wie arbeitet GORM und welche Funktionen sind für CRUD-Operationen wichtig?
-Sind meine GORM-Modelle sinnvoll aufgebaut und wie können sie verbessert werden?
-Wie sieht eine Datenbankverbindung mit GORM und PostgreSQL aus?
-Wie wird ein Repository in Go aufgebaut?
-Ist meine main.go korrekt aufgebaut?
-Wie implementiert man Handler, Services und Repositories nach Go-Konventionen?
-Wie werden DTOs sinnvoll strukturiert und verwendet?
-Wie testet man REST-Endpunkte mit PowerShell?
-Wie schreibt man Integrationstests in Go?
-Welche Werkzeuge gibt es für Codeformatierung, Codeanalyse und Qualitätssicherung (goimports, golangci-lint, go vet, staticcheck)?
-Welche Bedeutung haben Befehle wie go build ./... und go test?
-Welche Dateien und Konfigurationen werden für ein Go-Projekt zusätzlich benötigt (z. B. .gitignore, Docker, Docker Compose)?
-Wie kann ein ASCII-Art-Startbanner für den Server und für Testläufe erstellt werden?
+Während der Entwicklung wurden KI-Werkzeuge zur Unterstützung bei Architektur, Implementierung, Validierung, Tests und Projektkonfiguration verwendet.
+
+### Verwendete Prompts und Fragestellungen
+
+#### Projektstart und Framework-Auswahl
+
+* Welches Framework eignet sich für die Entwicklung eines REST-Servers in Go?
+* Welche Standardbibliotheken und Tools werden in Go-Projekten häufig verwendet?
+* Wie beginne ich ein neues Go-Projekt mit Gin?
+* Wie sollte eine typische `main.go` in Go aussehen?
+* Ist ein `src`-Verzeichnis in Go notwendig?
+* Ist meine Projektstruktur für ein Go-Projekt sinnvoll?
+
+#### Datenmodell und GORM
+
+* Wie werden Entitäten mit Structs in Go erstellt?
+* Wie modelliert man 1:1- und 1:n-Beziehungen mit GORM?
+* Was bedeuten Struct Tags wie `json`, `gorm`, `binding` und `validate`?
+* Sind meine GORM-Modelle sinnvoll aufgebaut und wie können sie verbessert werden?
+* Wie sieht eine Datenbankverbindung mit GORM und PostgreSQL aus?
+* Wie arbeitet GORM und welche Funktionen sind für CRUD-Operationen wichtig?
+
+#### Architektur und Implementierung
+
+* Wie wird ein Repository in Go aufgebaut?
+* Wie implementiert man Handler, Services und Repositories nach Go-Konventionen?
+* Ist meine `main.go` korrekt aufgebaut?
+* Wie werden DTOs sinnvoll strukturiert und verwendet?
+* Wie funktioniert die Validierung von Requests in Gin?
+* Wie werden falsche oder nicht sinnvolle Eingaben im Handler abgefangen?
+
+#### Testen und Qualitätssicherung
+
+* Wie testet man REST-Endpunkte mit PowerShell?
+* Wie schreibt man Integrationstests in Go?
+* Wie können Tests nach dem Given-When-Then-Prinzip strukturiert werden?
+* Welche Bedeutung haben Befehle wie `go build ./...`, `go test` und `go vet ./...`?
+* Welche Werkzeuge gibt es für Codeformatierung, Codeanalyse und Qualitätssicherung, z. B. `goimports`, `golangci-lint`, `go vet` und `staticcheck`?
+
+#### Projektkonfiguration und Abgabe
+
+* Welche Dateien und Konfigurationen werden für ein Go-Projekt zusätzlich benötigt, z. B. `.gitignore`, Dockerfile und Docker Compose?
+* Wird für die Abgabe eine Docker- oder Docker-Compose-Konfiguration benötigt?
+* Wie kann ein ASCII-Art-Startbanner für den Server und für Testläufe erstellt werden?
