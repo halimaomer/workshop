@@ -10,4 +10,6 @@ type Standort struct {
 	HotelID    uint   `gorm:"column:hotel_id;uniqueIndex" json:"hotel_id"`
 }
 
-func (Standort) TableName() string { return "hotel.standort" }
+func (Standort) TableName() string {
+	return "hotel.standort"
+}
