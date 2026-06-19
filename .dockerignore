@@ -1,0 +1,10 @@
+.git
+.vscode
+.idea
+gotmp
+.tmp
+*.exe
+*.test
+coverage.out
+Dockerfile
+README.md
