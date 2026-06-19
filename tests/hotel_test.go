@@ -32,20 +32,23 @@ func setupRouter(t *testing.T) *gin.Engine {
 }
 
 func TestGetHotels(t *testing.T) {
+	// Given
 	router := setupRouter(t)
 
+	// When
 	req := httptest.NewRequest(http.MethodGet, "/hotels", nil)
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 
+	// Then
 	if w.Code != http.StatusOK {
 		t.Errorf("Erwartet 200, erhalten %d", w.Code)
 	}
 }
 
 func TestCreateHotel(t *testing.T) {
+	// Given
 	router := setupRouter(t)
-
 	body := map[string]any{
 		"name": "Testhotel",
 		"standort": map[string]any{
@@ -59,22 +62,23 @@ func TestCreateHotel(t *testing.T) {
 			{"zimmernummer": "101", "preis": 99.90},
 		},
 	}
-
 	jsonBody, _ := json.Marshal(body)
+
+	// When
 	req := httptest.NewRequest(http.MethodPost, "/hotels", bytes.NewBuffer(jsonBody))
 	req.Header.Set("Content-Type", "application/json")
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 
+	// Then
 	if w.Code != http.StatusCreated {
 		t.Errorf("Erwartet 201, erhalten %d — Body: %s", w.Code, w.Body.String())
 	}
 }
 
 func TestCreateHotel_ValidationError(t *testing.T) {
+	// Given
 	router := setupRouter(t)
-
-	// Name fehlt → Validierung muss scheitern
 	body := map[string]any{
 		"name": "",
 		"standort": map[string]any{
@@ -85,13 +89,15 @@ func TestCreateHotel_ValidationError(t *testing.T) {
 			"land":       "Deutschland",
 		},
 	}
-
 	jsonBody, _ := json.Marshal(body)
+
+	// When
 	req := httptest.NewRequest(http.MethodPost, "/hotels", bytes.NewBuffer(jsonBody))
 	req.Header.Set("Content-Type", "application/json")
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 
+	// Then
 	if w.Code != http.StatusUnprocessableEntity {
 		t.Errorf("Erwartet 422, erhalten %d", w.Code)
 	}
