@@ -98,10 +98,14 @@ Während der Entwicklung wurden KI-Werkzeuge zur Unterstützung bei Architektur,
 
 * Welches Framework eignet sich für die Entwicklung eines REST-Servers in Go?
 * Welche Standardbibliotheken und Tools werden in Go-Projekten häufig verwendet?
+* Wie beginne ich jetzt am besten mit dem Projekt? Was muss ich mir für das Framwork und die Bibliotheken herunterladen?
 * Wie beginne ich ein neues Go-Projekt mit Gin?
 * Wie sollte eine typische `main.go` in Go aussehen?
 * Ist ein `src`-Verzeichnis in Go notwendig?
+* Zeige mir eine sinnvolle Projektstruktur auf.
 * Ist meine Projektstruktur für ein Go-Projekt sinnvoll?
+* Welche Erweiterungen in VS-Code sind empfehlenswert für Go?
+* Benötigt man für Go ein src Verzeichnis?
 
 #### Datenmodell und GORM
 
