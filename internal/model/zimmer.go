@@ -7,4 +7,6 @@ type Zimmer struct {
 	HotelID      uint    `gorm:"column:hotel_id;index"       json:"hotel_id"`
 }
 
-func (Zimmer) TableName() string { return "hotel.zimmer" }
+func (Zimmer) TableName() string {
+	return "hotel.zimmer"
+}

@@ -12,4 +12,6 @@ type Hotel struct {
 	Zimmer       []Zimmer  `gorm:"foreignKey:HotelID;constraint:OnDelete:CASCADE" json:"zimmer,omitempty"`
 }
 
-func (Hotel) TableName() string { return "hotel.hotel" }
+func (Hotel) TableName() string {
+	return "hotel.hotel"
+}
